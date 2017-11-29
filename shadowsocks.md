@@ -49,6 +49,7 @@ sudo ldconfig
 sudo make install
 ```
 -shadowsocks configure
+
 create config.json
 ```
 vim /home/ubuntu/config.json
@@ -69,12 +70,15 @@ server_port：指定shadowsocks服务的端口，将用于客户端连接时使�
 password：配置一个密码，客户端连接时使用；
 method：选择一个加密方式，默认是aes-256-cfb；
 local_port：客户端的代理端口
+
 - run shadowsocks  server
+
 ```
 sudo ssserver -c /home/ubuntu/config.json -d start //for start
 sudo ssserver -c /home/ubuntu/config.json -d stop//for stop
 ```
-设置开机自启动
+- 设置开机自启动
+
 ```
 sudo vi /etc/rc.local
 ```
@@ -82,22 +86,25 @@ sudo vi /etc/rc.local
 ```
 sudo ssserver -c /home/ubuntu/config.json -d start
 ```
--设置EC2安全组
-在EC2控制面板中拉倒最右边有个安全组点击进入
+
+- 设置EC2安全组
+
+在EC2控制面板中拉倒最右边有个安全组点击进入;
 操作中选择编辑入站规则设置：
 类型：自定义TCP规则
 端口：上面设置的server_port
 来源：0.0.0.0/0
 
--重启EC2实例
+- 重启EC2实例
+
 在EC2控制面板中点击实例右键设置实例状态为重启
 
--设置shadowsocks  客户端
-[下载](http://shadowsocks.org/en/download/clients.html)
-参数设置：
-服务器地址为EC2的IPv4公有IP
-端口和加密方式按照服务器端设置
-启动系统代理或者使用浏览器插件SwitchOmega管理即可
+## 4设置shadowsocks  客户端
+- [下载](http://shadowsocks.org/en/download/clients.html)
+- 参数设置
+服务器地址为EC2的IPv4公有IP;
+端口和加密方式按照服务器端设置;
+启动系统代理或者使用浏览器插件SwitchOmega管理即可.
 
 <完>
 
