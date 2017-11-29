@@ -1,11 +1,11 @@
 # AWS 搭建 ShadowSocks
-## 1 新建ES2 
+## 1 新建EC2 
 - 推荐选择服务器地址在亚太地区（东京）
 - 选择Ubuntu系统
 - 链接选择一个独立的 SSH 客户端
 ## 2 连接远程服务器 （XShell）
-## 3 在ES2上安装shadowsocks server（利用github源码安装）
--Download
+## 3 在EC2上安装shadowsocks server（利用github源码安装）
+### Download
 ```bash
 sudo apt-get install --no-install-recommends build-essential autoconf libtool \
         libssl-dev gawk debhelper dh-systemd init-system-helpers pkg-config asciidoc \
@@ -14,7 +14,7 @@ git clone https://github.com/shadowsocks/shadowsocks-libev.git
 cd shadowsocks-libev
 git submodule update --init --recursive
 ```
--Pre-build configure and install
+### Pre-build configure and install
 ```bash
 # Installation of basic build dependencies
 ## Debian / Ubuntu
@@ -48,12 +48,13 @@ sudo ldconfig
 ./autogen.sh && ./configure && make
 sudo make install
 ```
--shadowsocks configure
+### Shadowsocks Setting
 
-create config.json
+新建config.json
 ```
 vim /home/ubuntu/config.json
 ```
+写入所有参数
 ```
 {
     "server":"0.0.0.0",
@@ -66,45 +67,42 @@ vim /home/ubuntu/config.json
     "fast_open":false
 }
 ```
-server_port：指定shadowsocks服务的端口，将用于客户端连接时使用；
-password：配置一个密码，客户端连接时使用；
-method：选择一个加密方式，默认是aes-256-cfb；
-local_port：客户端的代理端口
+- server_port：指定shadowsocks服务的端口，将用于客户端连接时使用；
+- password：配置一个密码，客户端连接时使用；
+- method：选择一个加密方式，默认是aes-256-cfb；
+- local_port：客户端的代理端口
 
-- run shadowsocks  server
-
+### Run Shadowsocks  Server
 ```
-sudo ssserver -c /home/ubuntu/config.json -d start //for start
-sudo ssserver -c /home/ubuntu/config.json -d stop//for stop
+sudo ssserver -c /home/ubuntu/config.json -d start      //for start
+sudo ssserver -c /home/ubuntu/config.json -d stop      //for stop
 ```
-- 设置开机自启动
-
+### 设置开机自启动
 ```
 sudo vi /etc/rc.local
 ```
-在exit之前加入
+在exit 0之前加一行
 ```
 sudo ssserver -c /home/ubuntu/config.json -d start
 ```
+### 设置EC2安全组
 
-- 设置EC2安全组
+在EC2控制面板中拉倒最右边有个安全组点击进入
 
-在EC2控制面板中拉倒最右边有个安全组点击进入;
-操作中选择编辑入站规则设置：
-类型：自定义TCP规则
-端口：上面设置的server_port
-来源：0.0.0.0/0
+在操作中选择编辑入站规则设置：
+- 类型：自定义TCP规则
+- 端口：上面设置的server_port
+- 来源：0.0.0.0/0
 
-- 重启EC2实例
-
+### 重启EC2实例
 在EC2控制面板中点击实例右键设置实例状态为重启
 
-## 4设置shadowsocks  客户端
-- [下载](http://shadowsocks.org/en/download/clients.html)
-- 参数设置
-服务器地址为EC2的IPv4公有IP;
-端口和加密方式按照服务器端设置;
-启动系统代理或者使用浏览器插件SwitchOmega管理即可.
+## 4 设置shadowsocks  客户端
+### [下载](http://shadowsocks.org/en/download/clients.html)
+### 参数设置：
+- 服务器地址为EC2的IPv4公有IP;
+- 端口和加密方式按照服务器端所填写的参数设置
+### 启动系统代理或者使用浏览器插件SwitchOmega管理即可
 
 <完>
 
