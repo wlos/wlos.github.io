@@ -1,12 +1,31 @@
-# Sublime Text 3 设置
-## sublime text3 3176激活
-更改hosts：sudo vim /etc/hosts (ubuntu)
-C:\Windows\System32\drivers\etc\hosts (windows)
+# Sublime Text 3 
+## Install
+Install the GPG key:
+```
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+```
+Ensure apt is set up to work with https sources:
+```
+sudo apt-get install apt-transport-https
+```
+Select the channel (Stable) to use:
+```
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+```
+Update apt sources and install Sublime Text
+```
+sudo apt-get update
+sudo apt-get install sublime-text
+```
+## Sublime text3 license
+Edit hosts：
+- sudo vim /etc/hosts (ubuntu)
+- C:\Windows\System32\drivers\etc\hosts (windows)
 ```
 127.0.0.1       www.sublimetext.com
 127.0.0.1       license.sublimehq.com
 ```
-激活码：
+Sublime text 3176 license:
 ```
 ----- BEGIN LICENSE -----
 sgbteam
@@ -22,8 +41,7 @@ EA7E-1153259
 F913BE58 42FEA319 F954EFDD AE881E0B
 ------ END LICENSE ------
 ```
-sublime text 3143 授权码
-sublime text3 3143 在2017年9月13号进行的更新，之前的license key都不能用了，分享一个新的
+Sublime text 3143 license
 ```
 —– BEGIN LICENSE —–
 TwitterInc
