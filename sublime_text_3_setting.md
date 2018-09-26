@@ -62,7 +62,7 @@ E36B85CC 84991F19 7575D828 470A92AB
 ``` powershell
 {
     "trim_trailing_white_space_on_save": true,
-	"ensure_newline_at_eof_on_save": true,
+    "ensure_newline_at_eof_on_save": true,
     "auto_find_in_selection": true,
     "bold_folder_labels": true,
     "dictionary": "Packages/Language - English/en_US.dic",
@@ -101,9 +101,10 @@ E36B85CC 84991F19 7575D828 470A92AB
 }
 ```
 - **BracketHighlighter**: matches a variety of brackets such as: [], (), {}, "", '', #!xml <tag></tag>, and even custom brackets.
-- **File​Diffs**: Shows diffs between the current file, or selection(s) in the current file, and clipboard, another file, or unsaved changes. 
-- **Git​Gutter**: show git diff in gutter
-- **SublimeREPL**:  run an interpreter inside ST2 or ST3 (**Python** + virtualenv, R, Ruby, **Matlab**, **Shell**...)
+- **FileDiffs**: Shows diffs between the current file, or selection(s) in the current file, and clipboard, another file, or unsaved changes. 
+- **GitGutter**: Show git diff in gutter
+- **GitSavvy**: Full git and GitHub integration with Sublime Text 3.
+- **SublimeREPL**: Run an interpreter inside ST2 or ST3 (**Python** + virtualenv, R, Ruby, **Matlab**, **Shell**...)
 	- New build System for running python with sublimeREPL
 ``` powershell
 {
