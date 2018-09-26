@@ -17,10 +17,10 @@ Update apt sources and install Sublime Text
 sudo apt-get update
 sudo apt-get install sublime-text
 ```
-## Sublime text3 license
+## License
 Edit hosts：
-- sudo vim /etc/hosts (ubuntu)
-- C:\Windows\System32\drivers\etc\hosts (windows)
+- Ubuntu `sudo vim /etc/hosts`
+- Windows `C:\Windows\System32\drivers\etc\hosts`
 ```
 127.0.0.1       www.sublimetext.com
 127.0.0.1       license.sublimehq.com
